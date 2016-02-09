@@ -1,3 +1,5 @@
+build_image: drydock/u14jav:prod
+
 language: java
 
 jdk:
@@ -6,7 +8,24 @@ jdk:
    - openjdk6
    - oraclejdk8
 
-after_success:
-   - mvn clean cobertura:cobertura
-   - mvn test
+env:
+  global:
+    - FOO=BAR
+  matrix:
+    - m1=ONE
+    - m2=TWO
+build:
+  pre_ci_boot:
+    image_name: drydock/u14javall
+    image_tag: prod
+    pull: true
 
+  ci:
+    - ls -al
+    
+  on_failure:
+    - echo "The job failed!!!!!"
+    
+  on_success:
+    - mvn clean cobertura:cobertura
+    - mvn test
