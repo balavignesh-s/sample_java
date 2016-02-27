@@ -1,3 +1,4 @@
+language: java
 build_image: drydock/u14jav:prod
 
 jdk:
