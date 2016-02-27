@@ -1,7 +1,5 @@
 build_image: drydock/u14jav:prod
 
-language: java
-
 jdk:
    - openjdk7
    - oraclejdk7
